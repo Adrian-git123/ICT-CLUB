@@ -95,10 +95,10 @@ to the society
             </div>
             <div class="newsletter">
                 <h1>Newsletter</h1>
-                <form action="auth" method="post">
-                    <input type="text" placeholder="Full name" required>
-                    <input type="email" name="password" id="pass" placeholder="Email" required>
-                    <input type="button" name="submit" id="sub" value="Submit">
+                <form action="/newsletter-subscribe" method="POST">
+                    <input type="text" name="fullname" placeholder="Full name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="submit" id="sub" value="Submit">
                 </form>
             </div>
         </div>
@@ -106,7 +106,7 @@ to the society
     <hr class="c">
     <div class="register">
         <p>Register for free</p>
-        <button>Sign Up!</button>
+        <a href="/register"><button>Sign Up!</button></a>
     </div>
     <hr class="c">
     <div class="lower__nav">
