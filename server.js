@@ -27,6 +27,7 @@ db.prepare(`
 `).run();
 
 // --- MIDDLEWARE CONFIGURATION ---
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // Let express serve your stylesheet and images folders directly
 app.use(express.static(__dirname)); 
@@ -41,17 +42,29 @@ app.use(session({
 
 // Main Home Page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'), (err) => {
+        if (err) {
+            res.status(404).send('index.html not found');
+        }
+    });
 });
 
 // GET: Display Registration View
 app.get('/register', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'register.html'));
+    res.sendFile(path.join(__dirname, 'views', 'register.html'), (err) => {
+        if (err) {
+            res.status(404).send('register.html not found in views folder');
+        }
+    });
 });
 
 // GET: Display Login View
 app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'login.html'));
+    res.sendFile(path.join(__dirname, 'views', 'login.html'), (err) => {
+        if (err) {
+            res.status(404).send('login.html not found in views folder');
+        }
+    });
 });
 
 // FEATURE 1: Newsletter Form Backend Logic
